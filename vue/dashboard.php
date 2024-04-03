@@ -52,7 +52,7 @@ include 'entete.php';
 
     <div class="sales-boxes">
         <div class="recent-sales box">
-            <div class="title">Vente recentes</div>
+            <div class="title">Ventes recentes</div>
             <?php
             $ventes = getLastVente();
             ?>
@@ -67,7 +67,7 @@ include 'entete.php';
                     }
                     ?>
                 </ul>
-                <ul class="details">
+                <ul class="details">_
                     <li class="topic">Client</li>
                     <?php
                     foreach ($ventes as $key => $value) {
