@@ -10,7 +10,7 @@
   position: fixed;
   height: 100%;
   width: 240px;
-  background: #0a5830;
+  background: #000000;
   transition: all 0.5s ease;
 }
 .sidebar.active {
@@ -24,7 +24,7 @@
 .sidebar .logo-details i {
   font-size: 28px;
   font-weight: 500;
-  color: #fff;
+  color: #000000;
   min-width: 60px;
   text-align: center;
 }

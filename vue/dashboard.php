@@ -17,7 +17,7 @@ include 'entete.php';
         </div>
         <div class="box">
             <div class="right-side">
-                <div class="box-topic">Vente</div>
+                <div class="box-topic">Ventes</div>
                 <div class="number"><?php echo getAllVente()['nbre'] ?></div>
                 <div class="indicator">
                     <i class="bx bx-up-arrow-alt"></i>

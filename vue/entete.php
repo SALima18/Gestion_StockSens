@@ -21,27 +21,28 @@ include_once '../model/function.php';
   position: fixed;
   height: 100%;
   width: 240px;
-  background: #0e3a8ca9;
+  background: #130161;
   transition: all 0.5s ease;
 }
 .sidebar.active {
   width: 60px;
 }
-.sidebar .logo-details {
-  height: 20px;
-  display: flex;
-  align-items: center;
+.logo-container {
+   
+    margin-top: 20px; /* Add some space from the top */
 }
-.sidebar .logo-details i {
-  font-size: 20px;
-  font-weight: 100;
-  color: #fff;
-  min-width: 60px;
-  text-align: center;
+
+.logo-details {
+  
+    width: 100px; /* Set the width of the image (adjust as needed) */
+    height: 440px; /* Set the height to maintain aspect ratio */
+    border-radius: 80%; /* Ensure it's a circle */
+    
+   
 }
 .sidebar .logo-details .logo_name {
-  color: #fff;
-  font-size: 24px;
+  color: #ffffff;
+  font-size: 64px;
   font-weight: 500;
 }
 .sidebar .nav-links {
@@ -61,10 +62,10 @@ include_once '../model/function.php';
   transition: all 0.4s ease;
 }
 .sidebar .nav-links li a.active {
-  background: #0e3a8ca9;
+  background: #1e023d;
 }
 .sidebar .nav-links li a:hover {
-  background: #0e3a8ca9;
+  background: #1e023d;
 }
 .sidebar .nav-links li i {
   min-width: 60px;
@@ -629,6 +630,9 @@ ol.mtable li:nth-child(even) {
   background-color: #333;
   color: #fff;
 }
+.site-name {
+    color: white; /* Set text color to white */
+    font-size: 30px; }
 
     </style>
 </head>
@@ -636,9 +640,10 @@ ol.mtable li:nth-child(even) {
 <body>
 
     <div class="sidebar">
-        <div ><img class="logo-details" src= "C:\xampp\htdocs\gstock-dclic-main\public\images\LOGO.jpg" />
-            <span class="logo_name" >STOCK-SENS</span>
-        </div>
+
+    <div class="site-name">
+        <span class="logo_name">- STOCK-SENS -</span>
+    </div>
         <ul class="nav-links">
             <li>
                 <a href="dashboard.php" class="<?php echo basename($_SERVER['PHP_SELF'])=="dashboard.php" ? "active" : "" ?> ">
@@ -684,19 +689,15 @@ ol.mtable li:nth-child(even) {
             </li>
            
             
-            <!-- <li>
-          <a href="#">
-            <i class="bx bx-message" ></i>
-            <span class="links_name">Messages</span>
-          </a>
-        </li>
+          
         <li>
-          <a href="#">
-            <i class="bx bx-heart" ></i>
-            <span class="links_name">Favrorites</span>
-          </a>
-        </li> -->
-           
+        <div class="logo-container">
+        <img class="logo-details" src="/Image1.png" alt="Logo">
+                <span class="logo_name"></span>
+            </div>
+        </li>
+        
+       
             
         </ul>
     </div>
