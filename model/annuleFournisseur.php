@@ -1,11 +1,11 @@
 <?php
 include 'connexion.php';
 
-if (!empty($_POST['id'])) {
+if (!empty($_GET['id'])) {
     // Supprimer le fournisseur
     $sqlDeleteFournisseur = "DELETE FROM fournisseur WHERE id = ?";
     $reqDeleteFournisseur = $connexion->prepare($sqlDeleteFournisseur);
-    $reqDeleteFournisseur->execute(array($_POST['id']));
+    $reqDeleteFournisseur->execute(array($_GET['id']));
 
     // Si le fournisseur est supprimé avec succès
     if ($reqDeleteFournisseur->rowCount() != 0) {
