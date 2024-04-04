@@ -10,7 +10,7 @@ if (!empty($_GET['id'])) {
 <div class="home-content">
     <div class="overview-boxes">
         <div class="box">
-            <form action=" <?= !empty($_GET['id']) ?  "../model/modifCommande.php" : "../model/ajoutCommande.php" ?>" method="post">
+            <form action=" <?= !empty($_GET['id']) ?  "../model/annuleCommande.php" : "../model/ajoutCommande.php" ?>" method="post">
                 <input value="<?= !empty($_GET['id']) ?  $article['id'] : "" ?>" type="hidden" name="id" id="id">
 
                 <label for="id_article">Article</label>

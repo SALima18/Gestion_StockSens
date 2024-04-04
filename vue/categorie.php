@@ -9,7 +9,7 @@ if (!empty($_GET['id'])) {
 <div class="home-content">
     <div class="overview-boxes">
         <div class="box">
-            <form action=" <?= !empty($_GET['id']) ?  "../model/modifCategorie.php" : "../model/ajoutCategorie.php" ?>" method="post">
+            <form action=" <?= !empty($_GET['id']) ?  "../model/modifCategorie.php" : "../model/ajoutCategorie.php" ?>" method="get">
                 <label for="libelle_categorie">Libelle</label>
                 <input value="<?= !empty($_GET['id']) ?  $categorie['libelle_categorie'] : "" ?>" type="text" name="libelle_categorie" id="libelle_categorie" placeholder="Veuillez saisir le libéllé">
                 <input value="<?= !empty($_GET['id']) ?  $categorie['id'] : "" ?>" type="hidden" name="id" id="id" >
@@ -43,7 +43,7 @@ if (!empty($_GET['id'])) {
                         <tr>
                             <td><?= $value['libelle_categorie'] ?></td>
                             <td><a href="?id=<?= $value['id'] ?>"><i class='bx bx-edit-alt'></i></a>
-                                <a onclick="annuleCommande(<?= $value['id'] ?>, <?= $value['libelle_categorie'] ?>)" style="color: red;"><i class='bx bx-stop-circle'></i></a>
+                            <a onclick="annuleCategorie(<?= $value['id'] ?>, '<?= $value['libelle_categorie'] ?>')" style="color: red;"><i class='bx bx-stop-circle'></i></a>
                             </td>
                         </tr>
                 <?php
@@ -62,9 +62,9 @@ if (!empty($_GET['id'])) {
 include 'pied.php';
 ?>
 <script>
-function annuleCommande(id, libelle_categorie) {
-        if (confirm("Voulez-vous vraiment annuler cette vente ?")) {
-            window.location.href = "../model/annuleCommande.php?id=" + id + "&libelle_categorie=" + libelle_categorie
-        }
+function annuleCategorie(id) {
+    if (confirm("Voulez-vous vraiment annuler cette vente ?")) {
+        window.location.href = "../model/annuleCategorie.php?id_categorie=" + id;
     }
+}
 </script>

@@ -7,15 +7,19 @@ if (
     !empty($_GET['quantite'])
 ) {
 
-    $sql = "UPDATE vente SET etat=? WHERE id=?";
-    $req = $connexion->prepare($sql);
-    $req->execute(array(0,$_GET['idVente']));
+    // Supprimer la vente
+    $sqlDeleteVente = "DELETE FROM vente WHERE id = ?";
+    $reqDeleteVente = $connexion->prepare($sqlDeleteVente);
+    $reqDeleteVente->execute(array($_GET['idVente']));
 
-    if ($req->rowCount() != 0) {
-        $sql = "UPDATE article SET quantite=quantite+? WHERE id=?";
-        $req = $connexion->prepare($sql);
-        $req->execute(array($_GET['quantite'],$_GET['idArticle']));
-
+    // Si la vente a été supprimée avec succès
+    if ($reqDeleteVente->rowCount() != 0) {
+        // Mettre à jour la quantité de l'article
+        $sqlUpdateQuantiteArticle = "UPDATE article SET quantite = quantite + ? WHERE id = ?";
+        $reqUpdateQuantiteArticle = $connexion->prepare($sqlUpdateQuantiteArticle);
+        $reqUpdateQuantiteArticle->execute(array($_GET['quantite'], $_GET['idArticle']));
     }
 }
+
+// Redirection vers la page de vente
 header('Location: ../vue/vente.php');
