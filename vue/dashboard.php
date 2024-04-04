@@ -67,7 +67,7 @@ include 'entete.php';
                     }
                     ?>
                 </ul>
-                <ul class="details">_
+                <ul class="details">
                     <li class="topic">Client</li>
                     <?php
                     foreach ($ventes as $key => $value) {
