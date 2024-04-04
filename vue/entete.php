@@ -1,11 +1,28 @@
 <?php
-
 include_once '../model/function.php';
 ?>
-<!DOCTYPE html>
-<html lang="fr" dir="ltr">
 
+<!DOCTYPE html>
 <head>
+<?php
+// Par défaut, le thème est clair
+$themeClass = 'theme-light';
+
+// Vérifier s'il y a un paramètre de requête 'theme' défini
+if(isset($_GET['theme'])) {
+    // Si le paramètre de requête est 'dark', appliquer le thème sombre
+    if($_GET['theme'] == 'dark') {
+        $themeClass = 'dark-mode';
+    }
+}
+
+// Appliquer la classe de thème au corps du document
+echo '<body class="' . $themeClass . '">';
+
+// Reste du code HTML...
+?>
+
+
     <meta charset="UTF-8" />
     <title>
         <?php
@@ -36,7 +53,7 @@ include_once '../model/function.php';
   
     width: 100px; /* Set the width of the image (adjust as needed) */
     height: 440px; /* Set the height to maintain aspect ratio */
-    border-radius: 80%; /* Ensure it's a circle */
+    border-radius: 40%; /* Ensure it's a circle */
     
    
 }
@@ -47,6 +64,7 @@ include_once '../model/function.php';
 }
 .sidebar .nav-links {
   margin-top: 10px;
+
 }
 .sidebar .nav-links li {
   position: relative;
@@ -632,7 +650,50 @@ ol.mtable li:nth-child(even) {
 }
 .site-name {
     color: white; /* Set text color to white */
-    font-size: 30px; }
+    font-size: 18px;
+    padding: 20px 1px;
+  margin-right: 5px;
+   }
+  
+/* Styles pour le thème sombre */
+.dark-mode {
+    background-color: #333;
+    
+}
+
+.dark-mode .sidebar {
+    background-color: #1e023d;
+}
+
+.dark-mode .nav-links li a.active,
+.dark-mode .nav-links li a:hover {
+    background-color: #1e023d;
+}
+
+.dark-mode .home-section {
+    background-color: #333;
+}
+
+.dark-mode nav {
+    background-color: #fff;
+    color: #000;
+}
+
+
+.dark-mode .hidden-print {
+    color: #fff; /* Couleur du texte */
+    background-color: #1e023d; /* Couleur de fond */
+}
+
+.dark-mode .hidden-print a {
+    color: #fff; /* Couleur des liens */
+}
+
+/* Styles pour le thème clair */
+.theme-light {
+    background-color: #fff;
+    color: #333;
+}
 
     </style>
 </head>
@@ -642,7 +703,13 @@ ol.mtable li:nth-child(even) {
     <div class="sidebar">
 
     <div class="site-name">
-        <span class="logo_name">- STOCK-SENS -</span>
+   
+        
+        <!--<img class="logo-details" src="/images/Image1.png" alt="Logo">
+                <span class="logo_name"></span> -->
+           
+       
+        <span class="logo_name">	&#8711&#916 STOCK-SENS</span>
     </div>
         <ul class="nav-links">
             <li>
@@ -689,19 +756,13 @@ ol.mtable li:nth-child(even) {
             </li>
            
             
-          
-        <li>
-        <div class="logo-container">
-        <img class="logo-details" src="/Image1.png" alt="Logo">
-                <span class="logo_name"></span>
-            </div>
-        </li>
         
        
             
         </ul>
     </div>
     <section class="home-section">
+    
         <nav class="hidden-print">
             <div class="sidebar-button">
                 <i class="bx bx-menu sidebarBtn"></i>
@@ -711,10 +772,27 @@ ol.mtable li:nth-child(even) {
                     ?>
                 </span>
             </div>
+           
+    <!-- Contenu précédent du nav -->
+
             <div class="search-box">
                <input type="text" placeholder="Recherche..." />
                 <i class="bx bx-search"></i>
              </div>
+            
+  
+    <!-- Boutons de changement de thème -->
+    <div>
+        <!-- Bouton pour activer le thème clair -->
+        <a href="?theme=light">Thème Clair</a>
+        
+        <!-- Bouton pour activer le thème sombre -->
+        <a href="?theme=dark">Thème Sombre</a>
+    </div>
+</nav>
+
+
+             
              <!-- 
              <form action="resultat_recherche.php" method="GET">
              
@@ -729,3 +807,6 @@ ol.mtable li:nth-child(even) {
         <form>
     -->
         </nav>
+        
+  </body>
+ 

@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-$nom_serveur = "localhost:3306";
-$nom_base_de_donne = "kaka";
+$nom_serveur = "localhost:3308";
+$nom_base_de_donne = "gestion_stock_dclic";
 $utilisateur = "root";
 $motpass = "";
 

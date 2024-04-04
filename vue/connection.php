@@ -72,10 +72,11 @@
 <body>
 
 <?php
+var_dump($_POST);
 // Vérifier si le formulaire de connexion a été soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Vos informations de connexion à la base de données
-    $serveur = "localhost:3309";
+    $serveur = "localhost:3308";
     $utilisateur = "root";
     $mot_de_passe = "";
     $base_de_donnees = "gestion_stock_dclic";
@@ -97,18 +98,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $connexion->query($query);
 
     // Si l'utilisateur est trouvé dans la base de données
-    if ($result->num_rows > 0) {
+    if ($result->num_rows >0) {
+        // Rediriger vers le tableau de bord
+        session_start();
+        // Définir la variable de session indiquant que l'utilisateur est connecté
+        $_SESSION['loggedin'] = true;
         // Rediriger vers le tableau de bord
         header("Location: dashboard.php");
-       
         exit();
     } else {
+        // Identifiants incorrects, afficher un message d'erreur ou rediriger vers la page de connexion
         echo "Identifiants incorrects. Veuillez réessayer.";
-    }
-
-    // Fermer la connexion à la base de données
-    $connexion->close();
-}
+        // Ou rediriger vers la page de connexion
+        // header("Location: connection.php");
+        // exit();
+    }}
 ?>
 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 <h2>Connexion Stock-Sens</h2>
