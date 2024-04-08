@@ -5,17 +5,18 @@ include_once '../model/function.php';
 <!DOCTYPE html>
 <head>
 <?php
+if(isset($_GET['theme']) && $_GET['theme'] == 'dark') {
+  setcookie('theme', 'dark', time() + (86400 * 30), "/"); // 30 jours
+} elseif(isset($_GET['theme']) && $_GET['theme'] == 'light') {
+  setcookie('theme', 'light', time() + (86400 * 30), "/"); // 30 jours
+}
 // Par défaut, le thème est clair
 $themeClass = 'theme-light';
 
 // Vérifier s'il y a un paramètre de requête 'theme' défini
-if(isset($_GET['theme'])) {
-    // Si le paramètre de requête est 'dark', appliquer le thème sombre
-    if($_GET['theme'] == 'dark') {
-        $themeClass = 'dark-mode';
-    }
+if(isset($_COOKIE['theme']) && $_COOKIE['theme'] == 'dark') {
+  $themeClass = 'dark-mode';
 }
-
 // Appliquer la classe de thème au corps du document
 echo '<body class="' . $themeClass . '">';
 
@@ -536,8 +537,12 @@ table.mtable {
   border: 1px solid #ddd;
 }
 
-th,
-td {
+td{text-align: left;
+  padding: 16px;
+  background: #f2f2f2;
+  color:#333
+}
+th {
   text-align: left;
   padding: 16px;
 }
@@ -656,30 +661,35 @@ ol.mtable li:nth-child(even) {
    }
   
 /* Styles pour le thème sombre */
+/* Styles pour le thème sombre */
 .dark-mode {
-    background-color: #333;
+    background-color: #3c3c3d;
     
 }
 
+
 .dark-mode .sidebar {
-    background-color: #1e023d;
+    background-color: #1d1d1d;
 }
 
 .dark-mode .nav-links li a.active,
 .dark-mode .nav-links li a:hover {
-    background-color: #1e023d;
+    background-color: #272626;
 }
 
 .dark-mode .home-section {
-    background-color: #333;
+    background-color: #272626;
 }
 
 .dark-mode nav {
-    background-color: #fff;
+    background-color: #1d1d1d;
     color: #000;
 }
+.dark-mode .site-name {
+    color: #fff; /* Couleur du texte */
+    background-color: #1d1d1d; /* Couleur de fond */
 
-
+}
 .dark-mode .hidden-print {
     color: #fff; /* Couleur du texte */
     background-color: #1e023d; /* Couleur de fond */
@@ -689,10 +699,127 @@ ol.mtable li:nth-child(even) {
     color: #fff; /* Couleur des liens */
 }
 
+.dark-mode .sales-boxes .sales-details li a {
+  font-size: 18px;
+  color: #fff;
+  font-size: 400;
+  text-decoration: none;}
+
+.dark-mode .home-content {
+    color: #fff; } 
+
+.dark-mode .home-content .sales-boxes .recent-sales {
+  width: 65%;
+  background: #2e2a3b;
+  padding: 20px 30px;
+  margin: 0 20px;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .sales-boxes .box .button a {
+  color: #fff;
+  background: #0a2558;
+  padding: 4px 12px;
+  font-size: 15px;
+  font-weight: 400;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+
+/* Right box */
+.dark-mode .home-content .sales-boxes .top-sales {
+  width: 35%;
+  background: #34313b;
+  padding: 20px 30px;
+  margin: 0 20px 0 0;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.dark-mode .sales-boxes .top-sales li .product,
+.price {
+  font-size: 17px;
+  font-weight: 400;
+  color: #fff;
+}
+
+.dark-mode .overview-boxes .box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* min-width: calc(100% / 4 - 15px); */
+  background: #34313b;
+  padding: 15px 14px;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  margin: 5px; }
+  .dark-mode .home-section nav {
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+  background: #1d1d1d;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  width: calc(100% - 240px);
+  left: 240px;
+  z-index: 100;
+  padding: 0 20px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease;
+}
+.dark-mode .nav .search-box input {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  background: #fff;
+  border: 2px solid #efeef1;
+  border-radius: 6px;
+  font-size: 18px;
+  padding: 0 15px;
+}
+
+
+
+.dark-mode nav .search-box input {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  background: #3c3c3d;
+  border: 2px solid #efeef1;
+  border-radius: 6px;
+  font-size: 18px;
+  padding: 0 15px;
+}
+
+
 /* Styles pour le thème clair */
 .theme-light {
     background-color: #fff;
     color: #333;
+}
+#searchForm {
+    display: inline; /* Pour que le formulaire prenne la taille de son contenu */
+}
+
+.search-box {
+    position: relative; /* Permet de positionner l'icône de recherche par rapport à son parent */
+}
+
+#searchInput {
+    padding-right: 30px; /* Espace pour l'icône de recherche */
+}
+
+#searchIcon {
+    position: absolute; /* Positionne l'icône de recherche de manière absolue */
+    right: 5px; /* Ajuste la position horizontale de l'icône */
+    top: 50%; /* Positionne l'icône verticalement au milieu */
+    transform: translateY(-50%); /* Centre l'icône verticalement */
+    cursor: pointer; /* Affiche le curseur de type pointer au survol de l'icône */
 }
 
     </style>
@@ -754,7 +881,15 @@ ol.mtable li:nth-child(even) {
                     <span class="links_name">Catégorie</span>
                 </a>
             </li>
-           
+            <li>
+    <!-- Formulaire de déconnexion -->
+    <li>
+    <a href="../vue/deconnexion.php" class="<?php echo basename($_SERVER['PHP_SELF']) == "deconnexion.php" ? "active" : "" ?>">
+        <i class="bx bx-log-out"></i>
+        <span class="links_name">Déconnexion</span>
+    </a>
+</li>
+</li>
             
         
        
@@ -775,20 +910,22 @@ ol.mtable li:nth-child(even) {
            
     <!-- Contenu précédent du nav -->
 
-            <div class="search-box">
-               <input type="text" placeholder="Recherche..." />
-                <i class="bx bx-search"></i>
-             </div>
+           <form action="redirection.php" method="get">
+    <div class="search-box">
+        <input type="text" name="query" placeholder="Recherche..." />
+        <button type="submit"  class="bx bx-search"></button>
+    </div>
+</form>
             
   
     <!-- Boutons de changement de thème -->
-    <div>
+    
         <!-- Bouton pour activer le thème clair -->
         <a href="?theme=light">Thème Clair</a>
         
         <!-- Bouton pour activer le thème sombre -->
         <a href="?theme=dark">Thème Sombre</a>
-    </div>
+    
 </nav>
 
 

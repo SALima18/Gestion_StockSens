@@ -99,6 +99,9 @@ if (!empty($_GET['id'])) {
                 ?>
             </table>
         </div>
+        <div>
+      <table> <tr><td><a href="../model/ajoutVente.php" class="add-client-link small" onclick="clearValidationMessages()"><i class='bx bx-plus'></i> </a></td></tr>
+</table></div>
     </div>
 
 </div>
@@ -124,3 +127,22 @@ include 'pied.php';
         prix.value = Number(quantite.value) * Number(prixUnitaire);
     }
 </script>
+<style>
+
+.add-client-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.add-client-link:hover {
+    background-color: #0056b3;
+}
+.small {
+    font-size: 14px; /* Choisissez la taille de police qui vous convient */
+    padding: 5px 10px; /* Choisissez la marge intérieure qui vous convient */
+}
+</style>

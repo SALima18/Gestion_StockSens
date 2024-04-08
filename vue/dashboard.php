@@ -52,7 +52,7 @@ include 'entete.php';
 
     <div class="sales-boxes">
         <div class="recent-sales box">
-            <div class="title">Ventes recentes</div>
+            <div class="title"><h4>Ventes recentes</h4></div>
             <?php
             $ventes = getLastVente();
             ?>
@@ -103,7 +103,8 @@ include 'entete.php';
             </div>
         </div>
         <div class="top-sales box">
-            <div class="title">Article le plus vendu</div>
+            <div class="title"><H4>Tendance : </br></H4>
+                <h6>"Article le plus vendu"</h6></div>
             <ul class="top-sales-details">
                 <?php
                 $article = getMostVente();

@@ -53,6 +53,8 @@ if (!empty($_GET['id'])) {
                 ?>
             </table>
         </div>
+        <div>
+      <a href="../model/ajoutCategorie.php" class="add-client-link small" onclick="clearValidationMessages()"><i class='bx bx-plus'></i> </a></div>
     </div>
 
 </div>
@@ -68,3 +70,22 @@ function annuleCategorie(id) {
     }
 }
 </script>
+<style>
+
+.add-client-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.add-client-link:hover {
+    background-color: #0056b3;
+}
+.small {
+    font-size: 14px; /* Choisissez la taille de police qui vous convient */
+    padding: 5px 10px; /* Choisissez la marge intérieure qui vous convient */
+}
+</style>
